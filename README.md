@@ -209,7 +209,7 @@ engineering forward.
 
 ## 📚 Books, Newsletters & Podcasts
 
-- _Designing Front-End Architecture_ — **Micah Godbolt** (O'Reilly) — _Field guide to structuring large-scale UIs._
-- _Design Systems_ — **Alla Kholmatova** — _Principles & patterns for cohesive products._
+- [_Designing Front-End Architecture_](https://www.oreilly.com/library/view/frontend-architecture-for/9781491926781/) — **Micah Godbolt** (O'Reilly) — _Field guide to structuring large-scale UIs._
+- [_Design Systems_](https://www.designsystemsbook.com/) — **Alla Kholmatova** — _Principles & patterns for cohesive products._
 - [CSS-Tricks Newsletter](https://css-tricks.com/newsletter/) — _Weekly front-end tips in your inbox._
 - [Syntax FM](https://syntax.fm/) — _Fun, technical front-end podcast hosted by Wes Bos & Scott Tolinski._ 
