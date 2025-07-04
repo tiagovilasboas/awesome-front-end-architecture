@@ -175,4 +175,41 @@ Creative Commons **Zero v1.0 Universal** — see [LICENSE](LICENSE).
 ## 🙏 Acknowledgements
 
 Inspired by [Awesome](https://awesome.re) guidelines and the amazing community pushing front-end
-engineering forward. 
+engineering forward.
+
+## 🌍 Internationalization (i18n)
+
+- [FormatJS / react-intl](https://formatjs.io/) — _Industry-standard message formatting & plurals._
+- [i18next](https://www.i18next.com/) — _Framework-agnostic internationalization with rich ecosystem._
+- [LinguiJS](https://lingui.dev/) — _Minimalist library with code-splitting & extraction CLI._
+
+## 📈 Analytics & Experimentation
+
+- [PostHog](https://posthog.com/) — _Open-source product analytics & feature flags._
+- [GrowthBook](https://growthbook.io/) — _Auditable A/B testing & remote config._
+- [Plausible Analytics](https://plausible.io/) — _Privacy-focused, script < 1 KB._
+
+## 📡 GraphQL & API Layer
+
+- [Apollo Client](https://www.apollographql.com/docs/react/) — _Caching, local state & devtools out of the box._
+- [urql](https://formidable.com/open-source/urql/) — _Lightweight & extensible GraphQL client._
+- [GraphQL Code Generator](https://www.graphql-code-generator.com/) — _Type-safe hooks & SDKs from schema._
+
+## 🚢 CI/CD & DevOps
+
+- [GitHub Actions](https://docs.github.com/actions) — _Native CI for build, test & deploy._
+- [Lighthouse CI Action](https://github.com/GoogleChrome/lighthouse-ci) — _Track performance budgets in the pipeline._
+- [Vercel Deploy Hooks](https://vercel.com/docs/projects/deploy-hooks) — _Trigger atomic deploys from any CI._
+
+## 📲 Mobile Web & PWAs
+
+- [Workbox](https://developer.chrome.com/docs/workbox/) — _Service Worker toolkit for offline & caching._
+- [Capacitor](https://capacitorjs.com/) — _Bridge web apps to iOS/Android APIs._
+- [PWA Asset Generator](https://github.com/onderceylan/pwa-asset-generator) — _CLI to create icons & splash screens._
+
+## 📚 Books, Newsletters & Podcasts
+
+- _Designing Front-End Architecture_ — **Micah Godbolt** (O'Reilly) — _Field guide to structuring large-scale UIs._
+- _Design Systems_ — **Alla Kholmatova** — _Principles & patterns for cohesive products._
+- [CSS-Tricks Newsletter](https://css-tricks.com/newsletter/) — _Weekly front-end tips in your inbox._
+- [Syntax FM](https://syntax.fm/) — _Fun, technical front-end podcast hosted by Wes Bos & Scott Tolinski._ 
