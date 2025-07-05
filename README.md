@@ -1,7 +1,6 @@
 # 🧱 Awesome Front-End Architecture
 
-> A curated list of articles, tools, patterns, and principles for scalable front-end architecture.  
-> Designed for developers who want to move from "just coding" to structuring robust systems with long-term maintainability.
+> A curated list of principles, patterns, real-world examples and tools for building scalable, maintainable, and modular front-end applications.
 
 ![GitHub Stars](https://img.shields.io/github/stars/tiagovilasboas/awesome-front-end-architecture?style=social)
 ![GitHub Forks](https://img.shields.io/github/forks/tiagovilasboas/awesome-front-end-architecture?style=social)
@@ -11,147 +10,173 @@
 
 ## 📘 TL;DR
 
-This list is a collection of resources I've personally used, applied, or referenced across 18 years of front-end development — from startups to fintechs to scalable SaaS platforms.
-
-It includes guides, tools, and case studies that helped me build front-end applications with **clean architecture**, **layered components**, **performance**, and a **real impact on the product**.
+This is not just another list of frontend tutorials.  
+It’s a curated architecture-driven guide built from real-world experience — designed to help you scale products, teams, and codebases without losing sanity.
 
 ---
 
 ## 📚 Index
 
-- [Component Architecture Models](#component-architecture-models)
-- [Front-End Architectural Models](#front-end-architectural-models)
-- [Architecture & Design Patterns](#architecture--design-patterns)
-- [Monorepo & Code Organization](#monorepo--code-organization)
-- [State Management](#state-management)
-- [Testing & CI/CD](#testing--cicd)
-- [Performance](#performance)
-- [PWA & Offline Strategy](#pwa--offline-strategy)
-- [Talks & Case Studies](#talks--case-studies)
-- [References](#references)
-- [Other Awesome Lists](#other-awesome-lists)
-- [About the Author](#about-the-author)
+- [🏗️ What is Front-End Architecture?](#-what-is-front-end-architecture)
+- [⚙️ Core Architectural Principles](#️-core-architectural-principles)
+- [🧩 Component Architecture](#-component-architecture)
+- [🧠 Front-End Architectural Styles](#-front-end-architectural-styles)
+- [🔄 State & Data Flow Architecture](#-state--data-flow-architecture)
+- [🏢 Structure, Folders & Boundaries](#-structure-folders--boundaries)
+- [🧪 Testing & Maintainability](#-testing--maintainability)
+- [❌ Anti-Patterns to Avoid](#-anti-patterns-to-avoid)
+- [📎 Real-World Examples](#-real-world-examples)
+- [📚 References](#-references)
+- [👨‍💻 About the Author](#-about-the-author)
 
 ---
 
-## 🧩 Component Architecture Models
+## 🏗️ What is Front-End Architecture?
 
-- **Presentational & Container** — separates UI from logic using smart containers and dumb components. Great for testability and reuse.  
-  👉 [Read more](https://medium.com/@dan_abramov/smart-and-dumb-components-7ca2f9a7c7d0)
+Architecture in frontend isn't just about folder structure.  
+It’s about **how your app evolves, scales, and stays resilient** as complexity and teams grow.
 
-- **Hooks & Context Co-location** — colocates logic/styles/tests next to components. Encourages modularity and single responsibility.  
-  👉 [Colocation Guide](https://tkdodo.eu/blog/colocation)
+### Key questions:
 
-- **Feature-based / Domain-Driven Structure** — organize code by domain (e.g. `/checkout`, `/auth`, `/profile`) instead of file type.  
-  👉 [Folder Structures in React](https://www.smashingmagazine.com/2021/01/structuring-react-projects-folder-structure/)
-
-- **Component-Driven Development (CDD)** — build UI components in isolation (Storybook etc) before wiring data and logic.  
-  👉 [Storybook CDD](https://storybook.js.org/blog/component-driven-dev/)
-
-- **Atomic Design** — structure components into atoms, molecules, organisms, templates, and pages.  
-  👉 [Brad Frost's Article](https://bradfrost.com/blog/post/atomic-web-design/)
+- How do you separate concerns?
+- How does data flow?
+- Where does business logic live?
+- Can this scale across squads and products?
+- Can this be tested, extended, or reused?
 
 ---
 
-## 🏗️ Front-End Architectural Models
+## ⚙️ Core Architectural Principles
 
-- **SPA / CSR / SSR / SSG** — rendering strategies depending on SEO, TTI, interactivity and infra constraints.  
-  👉 [Next.js Docs](https://nextjs.org/docs/basic-features/pages#static-generation-recommended) · [SSG vs SSR](https://www.netlify.com/blog/2020/11/30/difference-between-server-side-rendering-and-static-site-generation/)
+- **Separation of Concerns (SoC)** – split UI, logic, services, domain
+- **SRP / DRY / KISS / YAGNI** – design for clarity and intent
+- **Unidirectional Data Flow** – predictable state and rendering
+- **Layered Architecture** – UI → Service → Domain → Infra
+- **Port and Adapter** (Hexagonal UI) – invert dependencies, test boundaries
 
-- **Micro Frontends** — split monoliths into independently deployed micro-apps using module federation, Single-SPA, or Web Components.  
-  👉 [micro-frontends.org](https://micro-frontends.org/) · [Module Federation](https://webpack.js.org/concepts/module-federation/) · [Luca Mezzalira Book](https://leanpub.com/the-micro-frontends-book)
-
-- **Island Architecture** — server-rendered shell with dynamic “islands” hydrated client-side only when needed. Used in Astro, Qwik, etc.  
-  👉 [Astro Docs](https://docs.astro.build/core-concepts/islands/) · [Builder.io](https://www.builder.io/blog/island-architecture)
-
-- **Clean / Hexagonal / Modular Architecture** — layered front-end with domain, services, and UI layers. Promotes separation of concerns and scalability.  
-  👉 [Awesome Clean Architecture](https://github.com/pvarentsov/awesome-clean-architecture) · [Scaling Projects Clean](https://indepth.dev/posts/1360/scaling-your-project-with-clean-architecture/)
+> [Clean Architecture in Front-End](https://medium.com/javascript-in-plain-english/clean-architecture-for-frontend-applications-631c7aa779c7)
 
 ---
 
-## 🧠 Architecture & Design Patterns
+## 🧩 Component Architecture
 
-- [Scalable Front-End Architecture](https://martinfowler.com/articles/scalable-frontend-architecture.html)
-- [React Patterns](https://reactpatterns.com/)
-- [Screaming Architecture in Frontend](https://medium.com/javascript-in-plain-english/clean-architecture-for-frontend-applications-631c7aa779c7)
+- **Atomic Design** – atoms, molecules, organisms, templates, pages  
+  [Brad Frost](https://bradfrost.com/blog/post/atomic-web-design/)
 
----
+- **Feature/Domain-Driven Structure** – organize by business domain  
+  [Smashing Magazine](https://www.smashingmagazine.com/2021/01/structuring-react-projects-folder-structure/)
 
-## 📁 Monorepo & Code Organization
+- **Presentational vs Container Components** – separate logic from UI  
+  [Dan Abramov](https://medium.com/@dan_abramov/smart-and-dumb-components-7ca2f9a7c7d0)
 
-- [Nx Monorepo Guide](https://nx.dev/concepts/monorepos)
-- [Turborepo vs Lerna](https://blog.bitsrc.io/turborepo-vs-lerna-d4beabbcd64c)
-- [Monorepo Tools](https://monorepo.tools/)
+- **Component-Driven Development (CDD)** – design in isolation (Storybook)  
+  [Storybook CDD](https://storybook.js.org/blog/component-driven-dev/)
 
----
-
-## 🌐 State Management
-
-- [Zustand vs Redux vs Recoil](https://dev.to/tq-bit/zustand-vs-redux-vs-recoil-2c5p)
-- [Colocation Best Practice](https://tkdodo.eu/blog/colocation)
-- [React Context Performance](https://kentcdodds.com/blog/how-to-optimize-your-context-value)
+- **Colocation (Hooks + Context)** – colocate logic, style, and tests  
+  [Colocation Guide](https://tkdodo.eu/blog/colocation)
 
 ---
 
-## 🧪 Testing & CI/CD
+## 🧠 Front-End Architectural Styles
 
-- [Testing Pyramid](https://kentcdodds.com/blog/testing-pyramid)
-- [Write Tests That Matter](https://kentcdodds.com/blog/write-tests)
-- [CI/CD with Vercel](https://vercel.com/blog/gitops-on-vercel)
+- **SPA / CSR / SSR / SSG** – choose based on SEO, TTI, and infra  
+  [Next.js Rendering](https://nextjs.org/docs/basic-features/pages#static-generation-recommended)
 
----
+- **Clean Architecture for UI** – isolate domain logic from framework dependencies  
+  [Awesome Clean Architecture](https://github.com/pvarentsov/awesome-clean-architecture)
 
-## 🚀 Performance
+- **Modular Front-End** – build decoupled services and shareable libraries  
+  [Nx Docs](https://nx.dev/concepts/monorepos)
 
-- [Core Web Vitals](https://web.dev/vitals/)
-- [Frontend Performance Checklist](https://web.dev/fast/)
-- [PageSpeed Insights](https://pagespeed.web.dev/)
+- **Micro Frontends** – compose independent apps via Module Federation, Single-SPA  
+  [micro-frontends.org](https://micro-frontends.org/)
 
----
-
-## 📦 PWA & Offline Strategy
-
-- [Service Workers Primer](https://developers.google.com/web/fundamentals/primers/service-workers)
-- [Workbox by Google](https://developer.chrome.com/docs/workbox/)
-- [Offline Fallback](https://web.dev/offline-fallback-page/)
+- **Island Architecture** – SSR shell + hydrated interactive islands (Astro, Qwik)  
+  [Astro Docs](https://docs.astro.build/core-concepts/islands/)
 
 ---
 
-## 🎤 Talks & Case Studies
+## 🔄 State & Data Flow Architecture
+
+- **Colocated State** – logic and state stay close to components  
+- **Layered State** – UI state vs app state vs server state
+- **Data Fetching Strategies** – SWR, React Query, GraphQL caching  
+- **Command vs Query separation (CQRS)**  
+- **Event-driven UI** – message passing, reducers, effects
+
+> [State Management Colocation](https://tkdodo.eu/blog/colocation)  
+> [React Query Patterns](https://tkdodo.eu/blog/practical-react-query)
+
+---
+
+## 🏢 Structure, Folders & Boundaries
+
+- `/features/*` → domain-based folders
+- `/shared/*` → common utilities, components, hooks
+- `/app/` → root composition, routes, config
+- `/services/` → API, side effects, logic
+
+📌 Use tools like **Turborepo**, **Nx**, **ESLint boundaries**, and **Storybook** to enforce architecture in practice.
+
+---
+
+## 🧪 Testing & Maintainability
+
+- Unit tests per layer
+- Integration tests across boundaries
+- E2E for business flow validation
+- Mocks vs Spies vs Real services
+- CI/CD pipelines for lint/test/build before merge
+
+> [Testing Pyramid for Front-End](https://kentcdodds.com/blog/testing-pyramid)  
+> [Write Tests That Matter](https://kentcdodds.com/blog/write-tests)
+
+---
+
+## ❌ Anti-Patterns to Avoid
+
+- Overengineering: abstractions that solve no real problem
+- Clean Layer Hell: files with only `.index.ts` and no logic
+- Reusing everything just to “not repeat”
+- App state leaking into domain logic
+- Global “utils” with unclear boundaries
+- Putting all logic in the UI layer
+
+---
+
+## 📎 Real-World Examples
 
 - [Spotify Front-End Architecture](https://engineering.atspotify.com/2020/10/04/frontend-architecture-at-spotify/)
-- [Netflix Tech Blog](https://netflixtechblog.com/)
-- [Scaling UI Engineering](https://www.youtube.com/watch?v=5OjqD-ow8GE)
+- [Netflix UI Engineering](https://netflixtechblog.com/)
+- [Zé Delivery (Monorepo, DDD, Shared Design System)](https://youtu.be/5OjqD-ow8GE)
+- Your own: [React Layered Boilerplate](https://github.com/tiagovilasboas/react-layered-boilerplate)
 
 ---
 
 ## 📚 References
 
-All articles linked throughout this list were curated from real-world experience.  
-Special thanks to creators like [Martin Fowler](https://martinfowler.com), [Brad Frost](https://bradfrost.com), [Kent C. Dodds](https://kentcdodds.com), [Luca Mezzalira](https://lucamezzalira.com), and the contributors behind Storybook, Astro, and Next.js.
-
----
-
-## 📎 Other Awesome Lists
-
-- [Awesome Front-End System Design](https://github.com/greatfrontend/awesome-front-end-system-design)
-- [Awesome Clean Architecture](https://github.com/pvarentsov/awesome-clean-architecture)
-- [Awesome Microfrontends](https://github.com/rajasegar/awesome-micro-frontends)
+- [Clean Architecture by Uncle Bob](https://8thlight.com/blog/uncle-bob/2012/08/13/the-clean-architecture.html)
+- [Frontend Architecture Guide](https://martinfowler.com/articles/scalable-frontend-architecture.html)
+- [Atomic Design – Brad Frost](https://bradfrost.com/blog/post/atomic-web-design/)
+- [Component Driven Development](https://storybook.js.org/blog/component-driven-dev/)
+- [Microfrontends Handbook](https://leanpub.com/the-micro-frontends-book)
 
 ---
 
 ## 👨‍💻 About the Author
 
-Created and maintained by [**Tiago Vilas Boas**](https://github.com/tiagovilasboas) — aka **Montanha**, a front-end architect with 18+ years of experience building scalable UIs for fintechs, e-commerce, SaaS platforms and startups.
+Built and curated by [**Tiago Vilas Boas**](https://github.com/tiagovilasboas) — also known as **Montanha**.
 
-I help teams structure front-end codebases with clean architecture, business-driven decisions and performance in mind.
+> Front-End Architect • 18+ years of experience  
+> I help teams and products scale without breaking the UI, the code, or the team.
 
-📌 Other projects:
-- 🕒 [Ponto PJ](https://github.com/tiagovilasboas/ponto-pj) – Personal time tracker (PWA)
-- 🧰 [DataForge Tools](https://github.com/tiagovilasboas/dataforge-tools) – Dev toolbox (JWT decoder, mock generator and more)
-- ⚙️ [React Layered Boilerplate](https://github.com/tiagovilasboas/react-layered-boilerplate) – Scalable React boilerplate with separation of concerns
+Check out my other projects:
+
+- 🕒 [Ponto PJ](https://github.com/tiagovilasboas/ponto-pj) — Time tracking PWA for freelancers
+- 🧰 [DataForge Tools](https://github.com/tiagovilasboas/dataforge-tools) — Dev toolkit (JWT, JSON, Mock data)
+- ⚙️ [React Layered Boilerplate](https://github.com/tiagovilasboas/react-layered-boilerplate) — Clean architecture boilerplate for React
 
 ---
 
-> 💡 Found a great resource?  
-> Open a PR or issue and let’s grow this list together!
+> 🙌 Contributions welcome.  
+> If you know a concept, case study or tool that should be here, feel free to open a PR or drop an issue.
