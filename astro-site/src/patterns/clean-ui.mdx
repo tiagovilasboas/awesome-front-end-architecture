@@ -1,0 +1,52 @@
+---
+layout: ../layouts/BaseLayout.astro
+title: "Clean Architecture para UI"
+---
+
+# Clean / Hexagonal Architecture aplicada ao Front-End
+
+## Motivação
+Separar regras de negócio de detalhes de framework, possibilitando testes unitários sem DOM + migração de React → Vue sem dor.
+
+## Camadas típicas
+```
+UI  →  Application  →  Domain  ← Infrastructure (API, LocalStorage)
+```
+
+* **UI**: componentes puros, só exibem props.
+* **Application**: orquestra casos de uso, coordena chamadas.
+* **Domain**: entidades, value objects, regras, puro TypeScript.
+* **Infrastructure**: fetch, browser APIs, libs externas.
+
+## Exemplo de Port/Adapter
+```ts
+// port
+export interface AuthGateway { login(email: string,pwd:string): Promise<User> }
+
+// use-case
+export class LoginUseCase {
+  constructor(private auth: AuthGateway) {}
+  execute(dto){ return this.auth.login(dto.email,dto.pwd) }
+}
+
+// adapter HTTP
+export class HttpAuthGateway implements AuthGateway {
+  async login(e,p){ return (await fetch('/login',{...})).json() }
+}
+```
+
+## Vantagens
++ Testa domínio sem mock de HTTP/DOM
++ Mudança de framework vira detalhe da camada UI
++ Dependências externas ficam isoladas
+
+## Desvantagens
+- Overhead inicial de pastas/arquivos
+- Não é necessário em apps simples
+
+## Quando usar?
+1. Aplicações core-business de longa vida
+2. Múltiplos front-ends consumindo o mesmo domínio (web & mobile)
+
+## Links
+- [Clean Architecture original](https://8thlight.com/blog/uncle-bob/2012/08/13/the-clean-architecture.html)

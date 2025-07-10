@@ -1,0 +1,57 @@
+---
+layout: ../layouts/BaseLayout.astro
+title: "Modular Front-End"
+---
+
+# Modular Front-End / Monorepo
+
+Combinar vários pacotes front-end em um único repo (design system, utils, features) usando *workspace tools*.
+
+## Ferramentas
+| Tool | Highlights |
+|------|------------|
+| **Nx** | Graph de dependência visual, cache remoto, generators |
+| **Turborepo** | Cache + pipelining incremental, config zero-JSR |
+| **Lerna** | Versão & publish libs (agora integrado ao Nx) |
+
+## Estrutura típica
+```
+apps/
+  web/
+  admin/
+packages/
+  ui/        # design system
+  auth-lib/  # domínio
+  eslint-config/
+```
+
+## Vantagens
++ Reuso forte de código
++ Builds paralelos com cache (CI 5× mais rápido)
++ Single PR atualiza múltiplos pacotes coesos
+
+## Desvantagens
+- Monorepo gigante pode ficar lento sem cache
+- Exige governança (owners, CI policies)
+
+## Dica de Pipeline Turborepo
+```jsonc
+{
+  "pipeline": {
+    "build": {
+      "dependsOn": ["^build"],
+      "outputs": ["dist/**"]
+    },
+    "lint": {},
+    "test": { "outputs": [] }
+  }
+}
+```
+
+## Quando optar?
+1. Múltiplos apps que compartilham design system e domínios.
+2. Equipes que precisam de visibilidade de dependências.
+
+## Links
+- [Nx docs](https://nx.dev/)
+- [Turborepo](https://turbo.build/)

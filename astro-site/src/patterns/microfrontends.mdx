@@ -1,0 +1,51 @@
+---
+layout: ../layouts/BaseLayout.astro
+title: "Micro Frontends"
+---
+
+# Micro Frontends
+
+> Divida para conquistar: escalando produtos e times com micro front-ends.
+
+## TL;DR
+* **O que é?** Arquitetura que permite múltiplas equipes entregarem features independentes via apps isolados que, em runtime, compõem uma única interface.
+* **Quando usar?** Organizações com diversos domínios de negócio, ciclos de deploy independentes, stack heterogênea.
+* **Custo?** Infra mais complexa, orquestração de UX e design system, aumento de payload se mal configurado.
+
+## Implementações populares
+| Estratégia | Como funciona | Exemplo |
+|------------|---------------|---------|
+| **Module Federation** | Webpack carrega remotes sob demanda | Web, Next.js 13 | 
+| **Single-SPA** | Orquestrador registra apps e lida com rotas | 
+| **Iframe / Edge include** | CDN inclui HTML gerado de outros domínios | Amazon vídeo |
+
+## Exemplo (Module Federation)
+```js
+// host webpack.config.js
+exposes: {
+  './CheckoutApp': 'apps/checkout/Bootstrap.tsx'
+},
+```
+Na página host:
+```tsx
+const CheckoutApp = lazy(() => import('checkout/CheckoutApp'));
+```
+
+## Vantagens
++ Autonomia de squads (deploy, tech stack)
++ Redução de conflitos no monorepo gigante
++ Atualizações graduais sem big-bang
+
+## Desvantagens
+- UX inconsistente se design tokens divergirem
+- Duplica dependências se não compartilhar vendor bundle
+- Logging e routing cross-app fica complexo
+
+## Checklist de adoção
+1. Design system compartilhado? ✅
+2. Critério claro de ownership/domínio? ✅
+3. Ferramentas CI/CD suportam múltiplos pipelines? ✅
+
+## Links
+- [micro-frontends.org](https://micro-frontends.org/)
+- [Webpack 5 Module Federation Guide](https://webpack.js.org/concepts/module-federation/)

@@ -1,0 +1,42 @@
+---
+layout: ../layouts/BaseLayout.astro
+title: "Island Architecture"
+---
+
+# Island Architecture
+
+> Renderize apenas o que precisa de hidratação.
+
+## Conceito
+A página é gerada estaticamente no build. Pequenas “ilhas” JS são hidratadas no client – resto permanece HTML.
+
+![Islands](https://raw.githubusercontent.com/withastro/astro/main/assets/illustrations/islands.png)
+
+## Vantagens
++ TTFB e LCP ultrarrápidos (HTML pronto + CDN)
++ Menos JS enviado ao cliente
++ DX simples (Astro, Qwik: components shipped zero-JS by default)
+
+## Desvantagens
+- Curva de aprendizado se já está em SPA mindset
+- Integração com libs React pesadas pode exigir wrappers
+
+## Exemplo Astro
+```astro
+---
+import Counter from '../components/Counter.astro';
+---
+<Layout>
+  <h1>Blog</h1>
+  <Counter client:idle />
+</Layout>
+```
+`client:idle` indica que o componente recebe JS só após idle.
+
+## Quando optar?
+1. Sites de conteúdo onde performance/SEO tem prioridade.
+2. Landing pages com poucos widgets interativos.
+
+## Links
+- [Astro Islands docs](https://docs.astro.build/en/core-concepts/islands/)
+- [Qwik resumido](https://qwik.builder.io/docs/introduction/)
