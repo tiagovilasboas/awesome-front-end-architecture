@@ -18,6 +18,9 @@ const nav = [
   { href: "/about", label: "About" }
 ];
 const current = Astro.url.pathname;
+const currentIndex = nav.findIndex((n) => n.href === current);
+const prev = currentIndex > 0 ? nav[currentIndex - 1] : undefined;
+const next = currentIndex >= 0 && currentIndex < nav.length - 1 ? nav[currentIndex + 1] : undefined;
 ---
 <!DOCTYPE html>
 <html lang="en" class="scroll-smooth">
@@ -32,7 +35,10 @@ const current = Astro.url.pathname;
     <header class="sticky top-0 z-50 bg-white/80 dark:bg-gray-900/80 backdrop-blur border-b border-gray-200 dark:border-gray-800">
       <div class="max-w-5xl mx-auto flex items-center justify-between px-4 py-3">
         <a href="/" class="text-lg font-semibold">🧱 Awesome FE Architecture</a>
-        <nav class="hidden md:flex flex-wrap gap-2 text-sm">
+        <button id="menu-toggle" class="md:hidden p-2 rounded focus:outline-none focus:ring" aria-label="Menu">
+          <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" /></svg>
+        </button>
+         <nav class="hidden md:flex flex-wrap gap-2 text-sm">
           {nav.map((item) => (
             <a
               href={item.href}
@@ -43,14 +49,38 @@ const current = Astro.url.pathname;
           ))}
         </nav>
       </div>
+        {/* Mobile nav */}
+        <nav id="mobile-nav" class="hidden md:hidden flex flex-col gap-2 px-4 pb-4 text-sm">
+          {nav.map((item) => (
+            <a
+              href={item.href}
+              class={`px-2 py-1 rounded hover:bg-gray-100 dark:hover:bg-gray-800 ${current === item.href ? 'font-semibold text-orange-600 dark:text-orange-400' : ''}`}
+            >
+              {item.label}
+            </a>
+          ))}
+        </nav>
     </header>
     <main class="max-w-5xl mx-auto px-4 py-8">
       <article class="prose prose-slate dark:prose-invert max-w-none">
         <slot />
       </article>
+      <nav class="flex justify-between mt-12 text-sm">
+        {prev ? <a href={prev.href} class="text-orange-600 dark:text-orange-400 hover:underline">← {prev.label}</a> : <span />}
+        {next ? <a href={next.href} class="text-orange-600 dark:text-orange-400 hover:underline">{next.label} →</a> : <span />}
+      </nav>
     </main>
     <footer class="mt-16 py-8 text-center text-sm text-gray-500">
       © {new Date().getFullYear()} Awesome Front-End Architecture
     </footer>
+  <script is:inline>
+    document.addEventListener('DOMContentLoaded', () => {
+      const btn = document.getElementById('menu-toggle');
+      const nav = document.getElementById('mobile-nav');
+      if (btn && nav) {
+        btn.addEventListener('click', () => nav.classList.toggle('hidden'));
+      }
+    });
+  </script>
   </body>
 </html>

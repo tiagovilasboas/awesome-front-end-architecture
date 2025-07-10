@@ -3,19 +3,18 @@ layout: ../layouts/BaseLayout.astro
 title: "Front-End Architectural Styles"
 ---
 
+import Card from '../components/Card.astro'
+
 ## 🧠 Front-End Architectural Styles
 
-- **SPA / CSR / SSR / SSG** – choose based on SEO, TTI, and infra  
-  [Next.js Rendering](https://nextjs.org/docs/basic-features/pages#static-generation-recommended)
+<div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-6 mt-6">
+<Card title="SPA / CSR / SSR / SSG" href="https://nextjs.org/docs/basic-features/pages#static-generation-recommended" description="Choose rendering strategy based on SEO, time-to-interactive and infrastructure." />
 
-- **Clean Architecture for UI** – isolate domain logic from framework dependencies  
-  [Awesome Clean Architecture](https://github.com/pvarentsov/awesome-clean-architecture)
+<Card title="Clean Architecture for UI" href="https://github.com/pvarentsov/awesome-clean-architecture" description="Isolate domain logic from framework dependencies by applying Clean/Hexagonal principles." />
 
-- **Modular Front-End** – build decoupled services and shareable libraries  
-  [Nx Docs](https://nx.dev/concepts/monorepos)
+<Card title="Modular Front-End" href="https://nx.dev/concepts/monorepos" description="Build decoupled services & shareable libraries, often in a monorepo." />
 
-- **Micro Frontends** – compose independent apps via Module Federation, Single-SPA  
-  [micro-frontends.org](https://micro-frontends.org/)
+<Card title="Micro Frontends" href="https://micro-frontends.org/" description="Compose independent apps via Module Federation, Single-SPA or similar runtimes." />
 
-- **Island Architecture** – SSR shell + hydrated interactive islands (Astro, Qwik)  
-  [Astro Docs](https://docs.astro.build/core-concepts/islands/)
+<Card title="Island Architecture" href="https://docs.astro.build/core-concepts/islands/" description="SSR shell + hydrated interactive islands for ultra-fast performance (Astro, Qwik)." />
+</div>
