@@ -82,6 +82,9 @@ const next = currentIndex >= 0 && currentIndex < nav.length - 1 ? nav[currentInd
         btn.addEventListener('click', () => {
           nav.classList.toggle('hidden');
         });
+        nav.querySelectorAll('a').forEach(link => {
+          link.addEventListener('click', () => nav.classList.add('hidden'));
+        });
       }
     });
   </script>
