@@ -1,0 +1,13 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import PersonCard from '../components/PersonCard.astro';
+import { architects } from '../data/architects';
+---
+<BaseLayout title="Front-End Architects">
+  <h1>🧑‍💻 Influential Front-End Architects</h1>
+  <p class="mt-2">Pessoas que contribuíram significativamente para padrões, ferramentas e práticas de arquitetura no ecossistema front-end.</p>
+
+  <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-8 mt-8">
+    {architects.map((p) => <PersonCard person={p} />)}
+  </div>
+</BaseLayout>

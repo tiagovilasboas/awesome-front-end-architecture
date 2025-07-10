@@ -1,0 +1,15 @@
+---
+import type { Architect } from '../data/architects';
+
+const { person } = Astro.props as { person: Architect };
+---
+<article class="flex flex-col items-center text-center p-4 border border-gray-200 dark:border-gray-700 rounded-lg hover:shadow transition-shadow h-full bg-white dark:bg-gray-800">
+  <img src={person.avatar} alt={person.name} class="w-24 h-24 rounded-full object-cover mb-3" loading="lazy" />
+  <h3 class="text-lg font-semibold text-brand mb-1">{person.name}</h3>
+  <p class="text-sm text-gray-500 dark:text-gray-400 mb-2">{person.role}</p>
+  <p class="text-sm text-gray-600 dark:text-gray-300 mb-4 leading-snug">{person.bio}</p>
+  <div class="flex gap-3 text-brand-dark">
+    {person.twitter && <a href={person.twitter} aria-label="Twitter" target="_blank" rel="noopener" class="hover:underline">Twitter</a>}
+    {person.website && <a href={person.website} aria-label="Website" target="_blank" rel="noopener" class="hover:underline">Website</a>}
+  </div>
+</article>
