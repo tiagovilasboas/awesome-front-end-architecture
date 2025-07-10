@@ -2,6 +2,10 @@
 import BaseLayout from '../../layouts/BaseLayout.astro';
 import { architects } from '../../data/architects';
 
+export function getStaticPaths() {
+  return architects.map((a) => ({ params: { slug: a.slug } }));
+}
+
 const { slug } = Astro.props.params;
 const person = architects.find(a => a.slug === slug);
 if (!person) {
