@@ -3,7 +3,7 @@
 import Link, { LinkProps } from "next/link";
 import { usePathname } from "next/navigation";
 import clsx from "clsx";
-import { ComponentProps, ReactNode } from "react";
+import { ReactNode } from "react";
 
 interface NavLinkProps extends LinkProps {
   children: ReactNode;
