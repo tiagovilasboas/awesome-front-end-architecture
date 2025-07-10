@@ -6,7 +6,19 @@ export default {
     './src/**/*.{astro,html,js,jsx,ts,tsx,md,mdx}',
   ],
   theme: {
-    extend: {},
+    extend: {
+      colors: {
+        brand: {
+          DEFAULT: '#ea580c', // orange-600
+          light: '#ffedd5',
+          dark: '#ffb25c'
+        }
+      },
+      container: {
+        center: true,
+        padding: '1rem',
+      }
+    },
   },
   plugins: [typography],
 };

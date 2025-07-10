@@ -3,22 +3,22 @@ layout: ../layouts/BaseLayout.astro
 title: "Key Front-End Architecture Concepts"
 ---
 
+import Card from '../components/Card.astro'
+
 ## 🗂️ Key Front-End Architecture Concepts
 
-Este guia agrupa os tópicos mais importantes de arquitetura front-end. Explore cada conceito para ver detalhes e referências.
+<div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-6 mt-6">
+<Card title="Overview" href="/overview" description="Contexto geral e perguntas para guiar decisões arquiteturais." />
+<Card title="Principles" href="/principles" description="Princípios de engenharia que sustentam decisões (SoC, DRY, SRP…)." />
+<Card title="Component Architecture" href="/component-architecture" description="Padrões para compor e organizar componentes." />
+<Card title="Styles" href="/styles" description="SPA, Island, Microfrontends e outras abordagens." />
+<Card title="State" href="/state" description="Gerenciamento de estado e fluxo de dados." />
+<Card title="Structure" href="/structure" description="Estrutura de pastas, domínios e monorepos." />
+<Card title="Testing" href="/testing" description="Piramide de testes, E2E e automação CI/CD." />
+<Card title="Anti-patterns" href="/anti-patterns" description="Armadilhas comuns a evitar em projetos escaláveis." />
+<Card title="Examples" href="/examples" description="Estudos de caso reais em empresas como Netflix e Spotify." />
+<Card title="References" href="/references" description="Leituras e recursos de aprendizado aprofundado." />
+<Card title="About" href="/about" description="Sobre o autor e como contribuir." />
+</div>
 
-| Categoria | Descrição |
-|-----------|-----------|
-| [Overview](/overview) | Definição geral do que é arquitetura front-end e perguntas-chave para guiar decisões. |
-| [Principles](/principles) | Princípios de engenharia que sustentam decisões arquiteturais (SoC, SRP, DRY, etc.). |
-| [Component Architecture](/component-architecture) | Padrões de composição e organização de componentes como Atomic Design e CDD. |
-| [Styles](/styles) | Abordagens arquiteturais (SPA, Island, Microfrontends…). |
-| [State](/state) | Estratégias de gerenciamento de estado e fluxo de dados. |
-| [Structure](/structure) | Organização de pastas, domínios, boundaries e monorepos. |
-| [Testing](/testing) | Garantia de qualidade e manutenibilidade. |
-| [Anti-patterns](/anti-patterns) | Armadilhas comuns a evitar em projetos escaláveis. |
-| [Examples](/examples) | Estudos de caso reais em grandes empresas. |
-| [References](/references) | Leituras e materiais de aprendizado aprofundado. |
-| [About](/about) | Informações sobre o autor e como contribuir. |
-
-> Sinta-se à vontade para abrir PRs adicionando novos conceitos ou links relevantes! 🚀
+<p class="mt-6">Sinta-se à vontade para abrir PRs adicionando novos conceitos ou links relevantes! 🚀</p>

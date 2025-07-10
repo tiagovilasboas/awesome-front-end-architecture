@@ -32,7 +32,7 @@ const next = currentIndex >= 0 && currentIndex < nav.length - 1 ? nav[currentInd
     <link rel="icon" href="/favicon.svg" />
   </head>
   <body class="font-sans antialiased text-gray-900 bg-white dark:bg-gray-900 dark:text-gray-100">
-    <header class="sticky top-0 z-50 bg-white/80 dark:bg-gray-900/80 backdrop-blur border-b border-gray-200 dark:border-gray-800">
+    <header class="sticky top-0 z-50 bg-gradient-to-r from-brand-light via-white to-brand-light dark:from-gray-900/80 dark:via-gray-900/80 dark:to-gray-900/80 backdrop-blur border-b border-gray-200 dark:border-gray-800">
       <div class="max-w-5xl mx-auto flex items-center justify-between px-4 py-3">
         <a href="/" class="text-lg font-semibold">🧱 Awesome FE Architecture</a>
         <button id="menu-toggle" class="md:hidden p-2 rounded focus:outline-none focus:ring" aria-label="Menu">
@@ -42,7 +42,7 @@ const next = currentIndex >= 0 && currentIndex < nav.length - 1 ? nav[currentInd
           {nav.map((item) => (
             <a
               href={item.href}
-              class={`px-2 py-1 rounded hover:underline ${current === item.href ? 'font-semibold text-orange-600 dark:text-orange-400 underline' : ''}`}
+              class={`px-2 py-1 rounded hover:underline ${current === item.href ? 'font-semibold text-brand dark:text-brand-dark underline' : ''}`}
             >
               {item.label}
             </a>
@@ -54,7 +54,7 @@ const next = currentIndex >= 0 && currentIndex < nav.length - 1 ? nav[currentInd
           {nav.map((item) => (
             <a
               href={item.href}
-              class={`px-2 py-1 rounded hover:bg-gray-100 dark:hover:bg-gray-800 ${current === item.href ? 'font-semibold text-orange-600 dark:text-orange-400' : ''}`}
+              class={`px-2 py-1 rounded hover:bg-brand-light dark:hover:bg-gray-800 ${current === item.href ? 'font-semibold text-brand dark:text-brand-dark' : ''}`}
             >
               {item.label}
             </a>
@@ -66,8 +66,8 @@ const next = currentIndex >= 0 && currentIndex < nav.length - 1 ? nav[currentInd
         <slot />
       </article>
       <nav class="flex justify-between mt-12 text-sm">
-        {prev ? <a href={prev.href} class="text-orange-600 dark:text-orange-400 hover:underline">← {prev.label}</a> : <span />}
-        {next ? <a href={next.href} class="text-orange-600 dark:text-orange-400 hover:underline">{next.label} →</a> : <span />}
+        {prev ? <a href={prev.href} class="text-brand dark:text-brand-dark hover:underline">← {prev.label}</a> : <span />}
+        {next ? <a href={next.href} class="text-brand dark:text-brand-dark hover:underline">{next.label} →</a> : <span />}
       </nav>
     </main>
     <footer class="mt-16 py-8 text-center text-sm text-gray-500">
