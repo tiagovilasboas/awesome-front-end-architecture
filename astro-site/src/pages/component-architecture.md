@@ -1,3 +1,8 @@
+---
+layout: ../layouts/BaseLayout.astro
+title: "Component Architecture"
+---
+
 ## 🧩 Component Architecture
 
 - **Atomic Design** – atoms, molecules, organisms, templates, pages  

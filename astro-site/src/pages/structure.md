@@ -1,0 +1,13 @@
+---
+layout: ../layouts/BaseLayout.astro
+title: "Structure, Folders & Boundaries"
+---
+
+## 🏢 Structure, Folders & Boundaries
+
+- `/features/*` → domain-based folders
+- `/shared/*` → common utilities, components, hooks
+- `/app/` → root composition, routes, config
+- `/services/` → API, side effects, logic
+
+📌 Use tools like **Turborepo**, **Nx**, **ESLint boundaries**, and **Storybook** to enforce architecture in practice.

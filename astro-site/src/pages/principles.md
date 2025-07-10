@@ -1,0 +1,14 @@
+---
+layout: ../layouts/BaseLayout.astro
+title: "Core Architectural Principles"
+---
+
+## ⚙️ Core Architectural Principles
+
+- **Separation of Concerns (SoC)** – split UI, logic, services, domain
+- **SRP / DRY / KISS / YAGNI** – design for clarity and intent
+- **Unidirectional Data Flow** – predictable state and rendering
+- **Layered Architecture** – UI → Service → Domain → Infra
+- **Port and Adapter** (Hexagonal UI) – invert dependencies, test boundaries
+
+> [Clean Architecture in Front-End](https://medium.com/javascript-in-plain-english/clean-architecture-for-frontend-applications-631c7aa779c7)
