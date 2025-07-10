@@ -1,6 +1,7 @@
 "use client";
 
 import Link from "next/link";
+import NavLink from "@/components/NavLink";
 
 export default function Header() {
   return (
@@ -9,10 +10,10 @@ export default function Header() {
         <Link href="/" className="text-lg font-semibold tracking-tight hover:opacity-80 transition-opacity">
           🧱 Awesome Front-End Architecture
         </Link>
-        {/* Placeholder for future nav items */}
-        {/* <nav className="hidden md:flex items-center gap-6 text-sm">
-          <Link href="/about" className="hover:text-primary">About</Link>
-        </nav> */}
+        <nav className="hidden md:flex items-center gap-2">
+          <NavLink href="/architectures">Arquiteturas</NavLink>
+          <NavLink href="/concepts">Conceitos</NavLink>
+        </nav>
       </div>
     </header>
   );

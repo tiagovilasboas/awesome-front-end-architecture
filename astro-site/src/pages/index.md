@@ -1,3 +1,8 @@
+---
+layout: ../layouts/BaseLayout.astro
+title: "Awesome Front-End Architecture"
+---
+
 # 🧱 Awesome Front-End Architecture
 
 > A curated list of principles, patterns, real-world examples and tools for building scalable, maintainable, and modular front-end applications.
