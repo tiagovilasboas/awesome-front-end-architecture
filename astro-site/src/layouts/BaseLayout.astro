@@ -51,7 +51,7 @@ const next = currentIndex >= 0 && currentIndex < nav.length - 1 ? nav[currentInd
         </nav>
       </div>
         {/* Mobile nav */}
-        <nav id="mobile-nav" class="hidden md:hidden flex flex-col gap-2 px-4 pb-4 text-sm">
+        <nav id="mobile-nav" class="hidden md:hidden flex flex-col gap-2 px-4 pb-4 text-sm absolute top-full left-0 w-full bg-white dark:bg-gray-900 shadow-lg transition-transform transform origin-top">
           {nav.map((item) => (
             <a
               href={item.href}
@@ -79,7 +79,9 @@ const next = currentIndex >= 0 && currentIndex < nav.length - 1 ? nav[currentInd
       const btn = document.getElementById('menu-toggle');
       const nav = document.getElementById('mobile-nav');
       if (btn && nav) {
-        btn.addEventListener('click', () => nav.classList.toggle('hidden'));
+        btn.addEventListener('click', () => {
+          nav.classList.toggle('hidden');
+        });
       }
     });
   </script>
