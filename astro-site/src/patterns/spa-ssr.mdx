@@ -1,0 +1,52 @@
+---
+layout: ../layouts/BaseLayout.astro
+title: "SPA vs CSR vs SSR vs SSG"
+---
+
+# SPA × CSR × SSR × SSG
+
+> Como escolher a estratégia de renderização certa para seu front-end?
+
+## TL;DR
+| Estratégia | Melhor para | Custo | Ferramentas |
+|------------|-------------|-------|-------------|
+| **SPA / CSR** | Dashboards, apps após login | Inicial lento, SEO baixo | React Vite, Vue, Angular |
+| **SSR** | SEO, conteúdo dinâmico (e-commerce) | Requer servidor Node | Next.js, Nuxt, Remix |
+| **SSG** | Blogs, docs, marketing | Build mais lento | Astro, Hugo, Gatsby |
+| **ISR / Hybrid** | Catálogos grandes, conteúdo semi-estático | Complexidade infra | Next.js ISR |
+
+## Exemplo de código: Next.js híbrido
+```tsx
+export async function getStaticProps() {
+  const posts = await cms.list();
+  return { props: { posts }, revalidate: 60 }; // ISR a cada 60s
+}
+```
+
+## Vantagens & Desvantagens
+### SPA / CSR
++ UX fluida após primeira carga
++ Infra mais simples (CDN estático)
+- FCP alto em conexões lentas
+- Crawlers precisam de prerender
+
+### SSR
++ SEO pronto, tempo ao primeiro byte baixo
++ Pode streamar HTML (React 18)
+- Necessita servidor (custo e DevOps)
+- State hydration requerido no client
+
+### SSG
++ Arquivos puramente estáticos → performance máxima
++ Ótimo para CDN e cache
+- Build pode ficar lento em sites 10k+ páginas
+- Conteúdo precisa rebuild/deploy para atualizar
+
+## Quando escolher?
+1. Seu produto é *conteúdo first* (blog, docs) → **SSG/ISR**.
+2. Precisa de SEO + dados dinâmicos (e-commerce) → **SSR híbrido**.
+3. Dashboard interno, usuários logados → **SPA/CSR**.
+
+## Links
+- [Guia de Renderização Next.js](https://nextjs.org/learn/basics/data-fetching)
+- [Artigo react Server Components](https://react.dev/learn/server-and-client-components)

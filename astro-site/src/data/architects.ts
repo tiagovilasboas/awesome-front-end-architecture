@@ -5,6 +5,7 @@ export interface Architect {
   avatar: string;
   bio: string;
   area: 'architecture' | 'testing' | 'design-systems' | 'state-management';
+  works?: { title: string; url: string }[];
   twitter?: string;
   website?: string;
 }
@@ -15,6 +16,10 @@ export const architects: Architect[] = [
     name: 'Dan Abramov',
     role: 'React Core Team',
     area: 'state-management',
+    works: [
+        { title: 'Redux', url: 'https://github.com/reduxjs/redux' },
+        { title: 'Create React App', url: 'https://github.com/facebook/create-react-app' },
+    ],
     avatar: 'https://avatars.githubusercontent.com/u/810438?v=4',
     bio: 'Co-author of Redux and Create React App. Writes about React internals and architecture.' ,
     twitter: 'https://twitter.com/dan_abramov',

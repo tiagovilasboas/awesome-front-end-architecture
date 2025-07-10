@@ -18,6 +18,14 @@ if (!person) {
     <h1 class="text-2xl font-bold text-brand mb-1">{person.name}</h1>
     <p class="text-sm text-gray-500 dark:text-gray-400 mb-4">{person.role}</p>
     <p class="text-base leading-relaxed max-w-prose text-gray-700 dark:text-gray-300 mb-6">{person.bio}</p>
+    {person.works && (
+      <div class="mb-6 text-left">
+        <h2 class="text-lg font-semibold mb-2">Notable Work</h2>
+        <ul class="list-disc list-inside space-y-1">
+          {person.works.map(w => (<li><a class="hover:underline" href={w.url} target="_blank" rel="noopener">{w.title}</a></li>))}
+        </ul>
+      </div>
+    )}
     <div class="flex gap-4 text-brand-dark text-sm">
       {person.twitter && <a href={person.twitter} class="hover:underline" target="_blank" rel="noopener">Twitter</a>}
       {person.website && <a href={person.website} class="hover:underline" target="_blank" rel="noopener">Website</a>}

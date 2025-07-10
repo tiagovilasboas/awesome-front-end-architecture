@@ -8,7 +8,7 @@ import Card from '../components/Card.astro'
 ## 🧠 Front-End Architectural Styles
 
 <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-6 mt-6">
-<Card title="SPA / CSR / SSR / SSG" href="https://nextjs.org/docs/basic-features/pages#static-generation-recommended" description="Choose rendering strategy based on SEO, time-to-interactive and infrastructure." />
+<Card title="SPA / CSR / SSR / SSG" href="/patterns/spa-ssr" description="Choose rendering strategy based on SEO, time-to-interactive and infrastructure." />
 
 <Card title="Clean Architecture for UI" href="https://github.com/pvarentsov/awesome-clean-architecture" description="Isolate domain logic from framework dependencies by applying Clean/Hexagonal principles." />
 
