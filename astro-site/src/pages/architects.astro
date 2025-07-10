@@ -7,7 +7,29 @@ import { architects } from '../data/architects';
   <h1>🧑‍💻 Influential Front-End Architects</h1>
   <p class="mt-2">Pessoas que contribuíram significativamente para padrões, ferramentas e práticas de arquitetura no ecossistema front-end.</p>
 
-  <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-8 mt-8">
+  <input id="search" type="text" placeholder="Search by name or role..." class="mt-6 w-full sm:w-80 px-3 py-2 border rounded-md focus:outline-none focus:ring focus:border-brand" />
+
+  <div id="cards" class="grid sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-8 mt-8">
     {architects.map((p) => <PersonCard person={p} />)}
   </div>
+
+  <script is:inline>
+    document.addEventListener('DOMContentLoaded', () => {
+      const input = document.getElementById('search');
+      const cards = document.querySelectorAll('.person-card');
+      if (!input) return;
+      input.addEventListener('input', (e) => {
+        const q = e.target.value.toLowerCase();
+        cards.forEach(card => {
+          const name = card.dataset.name;
+          const role = card.dataset.role;
+          if (name.includes(q) || role.includes(q)) {
+            card.classList.remove('hidden');
+          } else {
+            card.classList.add('hidden');
+          }
+        });
+      });
+    });
+  </script>
 </BaseLayout>
