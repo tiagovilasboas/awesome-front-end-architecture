@@ -1,0 +1,22 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import { architects } from '../../data/architects';
+
+const { slug } = Astro.props.params;
+const person = architects.find(a => a.slug === slug);
+if (!person) {
+  throw new Error('Architect not found');
+}
+---
+<BaseLayout title={person.name}>
+  <div class="flex flex-col items-center text-center">
+    <img src={person.avatar} alt={person.name} class="w-32 h-32 rounded-full object-cover mb-4" />
+    <h1 class="text-2xl font-bold text-brand mb-1">{person.name}</h1>
+    <p class="text-sm text-gray-500 dark:text-gray-400 mb-4">{person.role}</p>
+    <p class="text-base leading-relaxed max-w-prose text-gray-700 dark:text-gray-300 mb-6">{person.bio}</p>
+    <div class="flex gap-4 text-brand-dark text-sm">
+      {person.twitter && <a href={person.twitter} class="hover:underline" target="_blank" rel="noopener">Twitter</a>}
+      {person.website && <a href={person.website} class="hover:underline" target="_blank" rel="noopener">Website</a>}
+    </div>
+  </div>
+</BaseLayout>
