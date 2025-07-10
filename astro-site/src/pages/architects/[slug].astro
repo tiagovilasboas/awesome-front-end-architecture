@@ -6,7 +6,7 @@ export function getStaticPaths() {
   return architects.map((a) => ({ params: { slug: a.slug } }));
 }
 
-const { slug } = Astro.props.params;
+const { slug } = Astro.params;
 const person = architects.find(a => a.slug === slug);
 if (!person) {
   throw new Error('Architect not found');
