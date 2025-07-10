@@ -7,7 +7,14 @@ import { architects } from '../data/architects';
   <h1>🧑‍💻 Influential Front-End Architects</h1>
   <p class="mt-2">Pessoas que contribuíram significativamente para padrões, ferramentas e práticas de arquitetura no ecossistema front-end.</p>
 
-  <input id="search" type="text" placeholder="Search by name or role..." class="mt-6 w-full sm:w-80 px-3 py-2 border rounded-md focus:outline-none focus:ring focus:border-brand" />
+  <div class="mt-6 flex flex-wrap gap-2 items-center">
+    <input id="search" type="text" placeholder="Search by name or role..." class="w-full sm:w-64 px-3 py-2 border rounded-md focus:outline-none focus:ring focus:border-brand" />
+    <button data-area="all" class="filter-btn px-3 py-2 rounded border text-sm bg-brand-light">All</button>
+    <button data-area="architecture" class="filter-btn px-3 py-2 rounded border text-sm">Architecture</button>
+    <button data-area="design-systems" class="filter-btn px-3 py-2 rounded border text-sm">Design Systems</button>
+    <button data-area="state-management" class="filter-btn px-3 py-2 rounded border text-sm">State</button>
+    <button data-area="testing" class="filter-btn px-3 py-2 rounded border text-sm">Testing</button>
+  </div>
 
   <div id="cards" class="grid sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-8 mt-8">
     {architects.map((p) => <PersonCard person={p} />)}
@@ -28,6 +35,23 @@ import { architects } from '../data/architects';
           } else {
             card.classList.add('hidden');
           }
+        });
+      });
+
+      // area filter
+      document.querySelectorAll('.filter-btn').forEach(btn => {
+        btn.addEventListener('click', () => {
+          const area = btn.dataset.area;
+          document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('bg-brand-light'));
+          btn.classList.add('bg-brand-light');
+          cards.forEach(card => {
+            const cArea = card.dataset.area;
+            if (area === 'all' || cArea === area) {
+              card.classList.remove('hidden');
+            } else {
+              card.classList.add('hidden');
+            }
+          });
         });
       });
     });

@@ -18,3 +18,23 @@ import Card from '../components/Card.astro'
 
 <Card title="Island Architecture" href="https://docs.astro.build/core-concepts/islands/" description="SSR shell + hydrated interactive islands for ultra-fast performance (Astro, Qwik)." />
 </div>
+
+## Detalhes dos estilos
+
+### SPA / CSR / SSR / SSG
+* **SPA/CSR**: rápido após primeira carga, ideal para apps focados em interatividade (Gmail). SEO limitado.
+* **SSR**: HTML enviado completo, ótimo para SEO e time-to-first-byte. Exige servidor Node (Next.js, Nuxt).
+* **SSG**: páginas estáticas no build, CDN friendly (Astro, Hugo). Bom para blogs/docs.
+
+### Clean Architecture para UI
+Isola domínio e aplicação de detalhes de framework. Camadas:
+`UI → Application → Domain ← Infrastructure`. Testes concentram-se no domínio. Facilita migração de framework (React → Vue).
+
+### Modular Front-End
+Monorepo com pacotes versionados. Uso de Nx/Turborepo para cache incremental. Compartilhamento de libs utilitárias e design system.
+
+### Micro Frontends
+Split por contexto de negócio. Cada MF deployado independentemente (Module Federation, Single-SPA). Benefícios: autonomia, risco isolado. Custo: infra + coordenação UX.
+
+### Island Architecture
+Renderiza shell no build, hidrata somente componentes interativos. Performance excepcional em sites de conteúdo. Ferramentas: Astro, Qwik, Marko.
